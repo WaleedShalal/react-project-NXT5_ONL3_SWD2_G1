@@ -1,16 +1,20 @@
+import { Form, useActionData } from "react-router";
 import "./Register.css";
 
 function Register() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    console.log("🚀 ~ handleSubmit ~ data:", data);
-    // sending data
-    // ...
-  };
+  const data = useActionData();
+  console.log("🚀 ~ Register ~ data:", data);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.target);
+  //   const data = Object.fromEntries(formData.entries());
+  //   console.log("🚀 ~ handleSubmit ~ data:", data);
+  //   // sending data
+  //   // ...
+  // };
   return (
-    <form onSubmit={handleSubmit}>
+    // <form onSubmit={handleSubmit}>
+    <Form method="post">
       <div>
         <label htmlFor="user-name">User Name</label>
         <input type="text" id="user-name" name="userName" />
@@ -24,7 +28,8 @@ function Register() {
         <input type="password" id="user-password" name="userPassword" />
       </div>
       <button>Submit</button>
-    </form>
+    </Form>
+    // </form>
   );
 }
 

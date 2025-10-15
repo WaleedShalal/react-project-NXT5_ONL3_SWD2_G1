@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap";
 import classes from "./TheFooter.module.css";
 
 function TheFooter(props) {
-  console.log("🚀 ~ TheFooter ~ props:", props);
   return (
     <footer className={classes.hamada}>
       <Container>

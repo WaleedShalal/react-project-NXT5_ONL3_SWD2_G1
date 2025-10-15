@@ -11,6 +11,7 @@ import NotFound from "@/pages/NotFound/NotFound";
 import Login from "@/pages/Login/Login";
 import Register from "@/pages/Register/Register";
 import authMiddleware from "./middlewares/authMiddleware";
+import Products from "@/pages/Products/Products";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,16 @@ const router = createBrowserRouter([
           {
             path: "category",
             Component: Category,
+          },
+          {
+            path: "products",
+            Component: Products,
+            // children: [
+            //   {
+            //     path: "product-details/:id",
+            //     Component: ProductDetails,
+            //   },
+            // ],
           },
           {
             path: "product-details/:id",
@@ -62,6 +73,13 @@ const router = createBrowserRouter([
           {
             path: "register",
             Component: Register,
+            action: async ({ request }) => {
+              let formData = await request.formData();
+              const data = Object.fromEntries(formData.entries());
+
+              console.log("🚀 ~ formData:", data);
+              return { message: "Success add new user" };
+            },
           },
         ],
       },

@@ -1,4 +1,3 @@
-import UserContext from "@/context/user/UserContext";
 import { redirect } from "react-router";
 
 export default async function authMiddleware({ context }, next) {

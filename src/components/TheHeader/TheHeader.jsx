@@ -7,8 +7,8 @@ import UserContext from "@/context/user/UserContext";
 
 const navLinks = [
   { path: "/", name: "Home" },
+  { path: "/products", name: "Products" },
   { path: "/cart", name: "Cart" },
-  { path: "/product-details", name: "Product Details" },
   { path: "/category", name: "Category" },
   { path: "/login", name: "Login" },
   { path: "/register", name: "Register" },
