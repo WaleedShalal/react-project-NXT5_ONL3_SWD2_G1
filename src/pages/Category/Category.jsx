@@ -1,10 +1,8 @@
 import { useSelector } from "react-redux";
 
 function Category() {
-  const storeData = useSelector(({ counter, products }) => ({
-    counter,
-    products,
-  }));
+  const storeData1 = useSelector(({ counter }) => counter);
+  const storeData2 = useSelector(({ products }) => products);
 
   return <div>Category</div>;
 }
