@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 // Layouts
-import MainLayout from "@/Layout/MainLayout/MainLayout";
+import MainLayout from "@/Layout/MainLayout";
+import AuthLayout from "@/Layout/AuthLayout";
 // Pages
 import Home from "@/pages/Home/Home";
 import Admin from "@/pages/Admin/Admin";
@@ -12,6 +13,8 @@ import Login from "@/pages/Login/Login";
 import Register from "@/pages/Register/Register";
 import authMiddleware from "./middlewares/authMiddleware";
 import Products from "@/pages/Products/Products";
+import Users from "@/pages/Users/Users";
+import apis from "@/services/apis";
 
 const router = createBrowserRouter([
   {
@@ -58,13 +61,17 @@ const router = createBrowserRouter([
             },
           },
           {
-            path: "*",
-            Component: NotFound,
+            path: "users",
+            Component: Users,
+            loader: async () => {
+              const data = await apis.getAllUsers();
+              return data;
+            },
           },
         ],
       },
       {
-        Component: MainLayout,
+        Component: AuthLayout,
         children: [
           {
             path: "login",
@@ -82,6 +89,10 @@ const router = createBrowserRouter([
             },
           },
         ],
+      },
+      {
+        path: "*",
+        Component: NotFound,
       },
     ],
   },

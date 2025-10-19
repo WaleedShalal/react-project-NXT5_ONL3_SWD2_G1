@@ -13,6 +13,7 @@ const navLinks = [
   { path: "/login", name: "Login" },
   { path: "/register", name: "Register" },
   { path: "/admin", name: "Admin" },
+  { path: "/users", name: "Users" },
 ];
 
 function TheHeader() {

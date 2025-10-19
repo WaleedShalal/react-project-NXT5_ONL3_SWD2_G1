@@ -1,11 +1,11 @@
+import apis from "@/services/apis";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // First, create the thunk
 export const fetchAllProducts = createAsyncThunk(
   "products/fetchAllProductsStatus",
   async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
+    const data = await apis.getAllProducts();
     return data;
   }
 );
@@ -21,7 +21,9 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(fetchAllProducts.pending, () => {});
+    builder.addCase(fetchAllProducts.pending, (state) => {
+      state.isError = false;
+    });
     builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
       state.isLoading = false;
       state.data = action.payload;

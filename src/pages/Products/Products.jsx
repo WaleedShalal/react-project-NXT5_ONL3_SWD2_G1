@@ -4,8 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchAllProducts } from "@/store/productsSlice/productsSlice";
 import { Card } from "react-bootstrap";
+import apis from "@/services/apis"; // index.js
+// import apis from "@/services/apis.apis"; // apis.js
 
 export default function Products() {
+  apis;
   const { isLoading, isError, data } = useSelector(({ products }) => products);
   console.log(`🚀 ~ Products ~ { isLoading, isError, data }:`, {
     isLoading,

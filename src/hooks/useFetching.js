@@ -1,7 +1,8 @@
 import { useParams } from "react-router";
 import { useState } from "react";
+import apis from "@/services/apis";
 
-function useFetching(url) {
+function useFetching() {
   const { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -15,9 +16,10 @@ function useFetching(url) {
       return;
     }
     try {
-      const response = await fetch(`${url}${id}`);
-      if (!response.ok) throw new Error("Invalid product id ❌");
-      const data = await response.json();
+      const data = await apis.getProduct(id);
+      // const response = await fetch(`${url}${id}`);
+      // if (!response.ok) throw new Error("Invalid product id ❌");
+      // const data = await response.json();
       setData(data);
     } catch (error) {
       setIsError(true);
