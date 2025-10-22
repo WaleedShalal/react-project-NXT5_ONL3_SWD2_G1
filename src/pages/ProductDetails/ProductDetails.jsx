@@ -8,7 +8,8 @@ const URL = "https://fakestoreapi.com/products/";
 
 function ProductDetails() {
   console.log("ProductDetails Component");
-  const { handleFecthData, isLoading, isError, data } = useFetching(URL);
+  const { setEnableFetch, isLoading, isError, data, refetch } =
+    useFetching(URL);
 
   // useEffect(() => {
   //   handleFecthData();
@@ -17,7 +18,8 @@ function ProductDetails() {
   return (
     <div className="product-details">
       <Container>
-        <button onClick={handleFecthData}>Start loading data</button>
+        <button onClick={() => setEnableFetch(true)}>Start loading data</button>
+        <button onClick={refetch}>reftech</button>
         {isLoading && <div>Loading product details data ...</div>}
         {!isLoading && isError && <div>Faild to fetch data </div>}
         {!isLoading && !isError && (

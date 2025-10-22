@@ -4,6 +4,7 @@ import TheFooter from "./../../components/TheFooter/TheFooter";
 import UserProvider from "@/context/user/UserProvider";
 import { Container } from "react-bootstrap";
 import useWindowResize from "@/hooks/useWindowResize";
+import { ErrorBoundary } from "react-error-boundary";
 
 function MainLayout() {
   // const { width, height } = useWindowResize();
@@ -15,7 +16,9 @@ function MainLayout() {
         <main>
           <Outlet />
         </main>
-        <TheFooter />
+        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+          <TheFooter />
+        </ErrorBoundary>
       </Container>
     </div>
   );
